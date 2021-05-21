@@ -1,0 +1,95 @@
+﻿<Window x:Class="ClockifyHelper.ClockOutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClockifyHelper" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+		mc:Ignorable="d"
+        Title="Clockify Helper - Clock Out" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+	<DockPanel Width="400" >
+		<StackPanel>
+			<DockPanel Margin="4">
+				<Label Content="Username" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<TextBox x:Name="UsernameTextBox" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" IsReadOnly="True" IsEnabled="False" VerticalContentAlignment="Center" IsReadOnlyCaretVisible="True"/>
+			</DockPanel>
+			<DockPanel Margin="4">
+				<Label Content="Workspace" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<TextBox x:Name="WorkspaceTextBox" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" IsReadOnly="True" IsEnabled="False" VerticalContentAlignment="Center" IsReadOnlyCaretVisible="True"/>
+			</DockPanel>
+			<DockPanel Margin="4">
+				<Label Content="Clock Started" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<TextBox x:Name="ClockStartedTextBox" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" IsReadOnly="True" IsEnabled="False" VerticalContentAlignment="Center" IsReadOnlyCaretVisible="True"/>
+			</DockPanel>
+			<Border BorderBrush="LightGray" BorderThickness="0.4" Margin="4, 2, 4, 2"/>
+			<DockPanel Margin="4">
+				<Label Content="Description" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<TextBox x:Name="DescriptionTextBox" AcceptsReturn="False" AcceptsTab="False" MaxLines="1" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center">
+					<TextBox.Style>
+						<Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+							<Style.Resources>
+								<VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+									<VisualBrush.Visual>
+										<Label Content="Enter a Client Facing Description" Foreground="LightGray"/>
+									</VisualBrush.Visual>
+								</VisualBrush>
+							</Style.Resources>
+							<Style.Triggers>
+								<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+									<Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+								</Trigger>
+								<Trigger Property="Text" Value="{x:Null}">
+									<Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+								</Trigger>
+								<Trigger Property="IsKeyboardFocused" Value="True">
+									<Setter Property="Background" Value="White" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</TextBox.Style>
+				</TextBox>
+			</DockPanel>
+			<DockPanel Margin="4, 4, 4, 0">
+				<Label Content="Project" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<TextBox x:Name="ProjectTextBox" AcceptsReturn="False" AcceptsTab="False" MaxLines="1" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Center">
+					<TextBox.Style>
+						<Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+							<Style.Resources>
+								<VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+									<VisualBrush.Visual>
+										<Label Content="Search for Project" Foreground="LightGray"/>
+									</VisualBrush.Visual>
+								</VisualBrush>
+							</Style.Resources>
+							<Style.Triggers>
+								<Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+									<Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+								</Trigger>
+								<Trigger Property="Text" Value="{x:Null}">
+									<Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+								</Trigger>
+								<Trigger Property="IsKeyboardFocused" Value="True">
+									<Setter Property="Background" Value="White" />
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</TextBox.Style>
+				</TextBox>
+			</DockPanel>
+			<DockPanel Margin="4, 0, 4, 4">
+				<Label Content="" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<ListBox x:Name="ProjectResultsListBox" Height="100"/>
+			</DockPanel>
+			<DockPanel Margin="4">
+				<Label Content="Tags" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<xctk:CheckComboBox x:Name="TagComboBox" IsEditable="True"/>
+			</DockPanel>
+			<DockPanel Margin="4">
+				<Label Content="Billable?" Width="100" HorizontalContentAlignment="Right" DockPanel.Dock="Left"/>
+				<CheckBox x:Name="BillableCheckbox" VerticalAlignment="Center"/>
+			</DockPanel>
+			<DockPanel Margin="4">
+				<Button Content="Clock Out" x:Name="ClockOutButton" Width="100" DockPanel.Dock="Right" HorizontalAlignment="Right"/>
+			</DockPanel>
+		</StackPanel>
+	</DockPanel>
+</Window>
