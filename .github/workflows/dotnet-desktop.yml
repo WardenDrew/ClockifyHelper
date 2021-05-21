@@ -76,10 +76,11 @@ jobs:
         $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
         [IO.File]::WriteAllBytes("GitHubActionsWorkflow.pfx", $pfx_cert_byte)
     
+    # Restore Packages
     - name: Restore Packages
       run: msbuild $env:Solution_Name /t:Restore
 
-    # Create the app package by building and packaging the Windows Application Packaging project
+    # Build the Project
     - name: Create the app package
       run: msbuild $env:Solution_Name /t:Build /p:OutDir=outdir\ /p:Configuration=Release /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
       env:
@@ -89,16 +90,9 @@ jobs:
     - name: Remove the pfx
       run: Remove-Item -path GitHubActionsWorkflow.pfx
 
-    # Add EasyZip
-    - name: Easy Zip Files
-      uses: vimtor/action-zip@v1
-      with:
-        files: outdir/
-        dest: ClockifyHelper.zip
-      
-    # Upload the MSIX package: https://github.com/marketplace/actions/upload-artifact
+    # Upload the ZIP
     - name: Upload build artifacts
       uses: actions/upload-artifact@v2
       with:
         name: ClockifyHelper
-        path: ClockifyHelper.zip
+        path: outdir\
