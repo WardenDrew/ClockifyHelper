@@ -95,4 +95,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: ClockifyHelper
-        path: outdir\
+        path: D:\a\ClockifyHelper\ClockifyHelper\ClockifyHelper\outdir\
