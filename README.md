@@ -1,4 +1,4 @@
-![Release Workflow](https://github.com/github/docs/actions/workflows/dotnet-desktop.yml/badge.svg)
+![Release Workflow](https://github.com/WardenDrew/ClockifyHelper/actions/workflows/dotnet-desktop.yml/badge.svg)
 # ClockifyHelper
 Helper Tool for clocking in and out of Clockify.
 
